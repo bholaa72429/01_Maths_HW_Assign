@@ -39,7 +39,7 @@
 # --- Calculate the Area & Perimeter
 
 
-# Ask for rounding
+# Ask for rounding of answer
 
 # ********** Printing Area **********
 

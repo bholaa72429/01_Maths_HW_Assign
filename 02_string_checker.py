@@ -13,7 +13,7 @@ valid_shape = [
 shape_accept = ""
 shape = ""
 
-# loop three times to make testing quicker
+# loop five times to make testing quicker
 
 for item in range(0, 5):
 
@@ -30,11 +30,11 @@ for item in range(0, 5):
             shape = var_list[0].title()
             shape_accept = "yes"
             break
-        # if the chosen snack is not valid, set snack_accept to no
+        # if the chosen shape is not valid, set snack_accept to no
         else:
             shape_accept = "no"
 
-    # if the snack is not OK - ask question again.
+    # if the shape is not OK - ask question again.
     if shape_accept == "yes":
         print("Shape Choice: ", shape)
     else:
