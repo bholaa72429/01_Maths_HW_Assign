@@ -23,7 +23,7 @@ def circle_areperi(side):
        except ValueError:
            print(error)
 
-area =""
+area = ""
 keep_going = ""
 while keep_going == "":
 
