@@ -2,7 +2,7 @@
 # areperi = area and perimeter
 # checks that input is an integer/ float which is more than zero
 # has a custom error mess
-def circle_areperi(radius, error, num_type):
+def circle_areperi(radius, error):
 
    valid = False
 
@@ -28,8 +28,7 @@ keep_going = ""
 while keep_going == "":
 
    circle_ap = circle_areperi("Please enter Radius of the Circle.",
-                              "Ohh! Please enter an number more than zero",
-                              float)
+                              "Ohh! Please enter an number more than zero")
    print("Area and Perimeter of Circle respectively",circle_ap)
 
 
