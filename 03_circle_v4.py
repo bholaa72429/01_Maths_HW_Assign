@@ -40,22 +40,22 @@ def circle_area_peri(ans):
               radius = diameter / 2
               print("Calculating ...")
 
-        # check if its more than 0 nad then calculate
-        if radius > 0:
+      # check if its more than 0 nad then calculate
+      if radius > 0:
           area = 3.14 * radius * radius
           peri = 2 * 3.14 * radius
 
           return area, peri
-        # if not more than zero show error
-        else:
+      # if not more than zero show error
+      else:
           print()
           print(error)
           radius = ""
 
-          # If integer is not entered, show error
-        except ValueError:
+  # If integer is not entered, show error
+  except ValueError:
 
-        print(error)
+      print(error)
 
 
 area = ""
