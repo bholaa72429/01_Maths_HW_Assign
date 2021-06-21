@@ -23,8 +23,8 @@ def yes_no(question):
 # area_peri = area and perimeter
 def circle_area_peri(ans):
    valid = False
-   error = "Whoops! Please enter an integer "
-
+   error = "Whoops! Please enter an integer. "
+   int_error = "oops! Please enter an number more than zero. "
 
    while not valid:
 
@@ -34,17 +34,6 @@ def circle_area_peri(ans):
               # get users input (radius)
               radius = float(input("Please Enter Radius. "))
 
-              # # check if its more than 0 nad then calculate
-              # if radius > 0:
-              #     area = 3.14*radius*radius
-              #     peri = 2 * 3.14 * radius
-              #
-              #     return area, peri
-              # # if not more than zero show error
-              # else:
-              #     print()
-              #     print(error)
-              #     radius=""
            # if user has the diameter
           else:
               diameter = float(input("Please Enter Diameter. "))
@@ -62,7 +51,7 @@ def circle_area_peri(ans):
           # if not more than zero show error
           else:
               print()
-              print(error)
+              print(int_error)
               radius=""
 
       # If integer is not entered, show error
