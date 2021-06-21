@@ -34,29 +34,41 @@ def circle_area_peri(ans):
               # get users input (radius)
               radius = float(input("Please Enter Radius. "))
 
+              # # check if its more than 0 nad then calculate
+              # if radius > 0:
+              #     area = 3.14*radius*radius
+              #     peri = 2 * 3.14 * radius
+              #
+              #     return area, peri
+              # # if not more than zero show error
+              # else:
+              #     print()
+              #     print(error)
+              #     radius=""
+           # if user has the diameter
           else:
               diameter = float(input("Please Enter Diameter. "))
               # work out teh radius
               radius = diameter / 2
               print("Calculating ...")
 
-      # check if its more than 0 nad then calculate
-      if radius > 0:
-          area = 3.14 * radius * radius
-          peri = 2 * 3.14 * radius
+          # check if its more than 0 nad then calculate
+          if radius > 0:
+              area = 3.14*radius*radius
+              peri = 2 * 3.14 * radius
 
-          return area, peri
-      # if not more than zero show error
-      else:
-          print()
+              return area, peri
+
+          # if not more than zero show error
+          else:
+              print()
+              print(error)
+              radius=""
+
+      # If integer is not entered, show error
+      except ValueError:
+
           print(error)
-          radius = ""
-
-  # If integer is not entered, show error
-  except ValueError:
-
-      print(error)
-
 
 area = ""
 keep_going = ""
