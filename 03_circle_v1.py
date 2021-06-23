@@ -1,4 +1,5 @@
 # area_peri = area and perimeter
+# function calculates the area and perimeter of a circle
 def circle_area_peri(radius):
     valid = False
     error = "Whoops! Please enter an integer "

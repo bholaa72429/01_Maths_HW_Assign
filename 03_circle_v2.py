@@ -23,6 +23,7 @@ def circle_areperi(radius, error):
        except ValueError:
            print(error)
 
+# main routine
 area = ""
 keep_going = ""
 while keep_going == "":
