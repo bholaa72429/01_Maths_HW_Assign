@@ -2,7 +2,7 @@
 
 
 # ********** Function Area **********
-
+# Integer checking function below
 
 
 

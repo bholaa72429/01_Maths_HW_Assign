@@ -52,7 +52,7 @@ def circle_area_peri(ans):
           else:
               print()
               print(int_error)
-              radius=""
+              #radius=""
 
       # If integer is not entered, show error
       except ValueError:
