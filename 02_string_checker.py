@@ -2,6 +2,7 @@
 # Each item in valid shape is a list with
 # valid options for each shape <full name, letter code (a -e)
 # , and possible abbreviations etc>
+
 valid_shape = [
     ["Circle", "c","ci", "cir", "a"],
     ["Rectangle", "r","re", "rec", "tangle", "b"],

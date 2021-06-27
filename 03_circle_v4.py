@@ -59,17 +59,17 @@ def circle_area_peri(ans):
 
           print(error)
 # main routine
-area = ""
+area_cir = ""
 keep_going = ""
 while keep_going == "":
-
+    # Asking about the radius of the circle
    rad_dia = yes_no("Do you have Radius of the Circle ?  ")
 
-   area , peri = circle_area_peri(rad_dia)
-   print("Area of Circle", area)
-   print("Perimeter of Circle", peri)
+   area_cir , peri_cir = circle_area_peri(rad_dia)
+   print("Area of Circle", area_cir)
+   print("Perimeter of Circle", peri_cir)
 
-   # Asking about the radius of the circle
+
 
 
    # Ask for more or quit

@@ -7,15 +7,16 @@ def square_area_peri(side):
    int_error = "ohh! Please enter an number more than zero"
    while not valid:
        try:
-           side = int(input(side))
+           side = float(input(side))
            # check if its more than 0 and then calculate
-           if side > 0 :
+           if side > 0:
                area = side*side
                peri = 4 * side
 
                return area, peri
            else:
                print(int_error)
+               side = ""
 
 
        except ValueError:
@@ -39,11 +40,3 @@ while keep_going == "":
 # farewell user at end of game.
 print("Thank you")
 
-# 0 wali problem sqr
-# sab function may same name ?
-# adding to base start kari !!
-# --
-# wed - pre sub
-# rounding & unit
-# ques - "int check to save time 0 " - will it work 2 fuction for 1 question
-# put base !!
