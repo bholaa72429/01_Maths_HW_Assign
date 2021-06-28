@@ -1,8 +1,27 @@
+# checking valid number input
+def num_check():
+    valid = False
+    error = "Whoops! Please enter an integer "
+    int_error = "ohh! Please enter an number more than zero"
+    while not valid:
+
+        try:
+            response = float(input(side))
+
+            # if response is less or = to 0
+            side = float(input(side))
+            # check if its more than 0 and then calculate
+            if side > 0:
+                continue
+            else:
+                print(int_error)
+
+        except ValueError:
+            print(error)
+
 # Function for Rectangle
 def rectangle_ap(side_one,side_two):
    valid = False
-   error = "Whoops! Please enter an integer "
-   int_error = "ohh! Please enter an number more than zero"
 
    while not valid:
        try:
@@ -11,21 +30,12 @@ def rectangle_ap(side_one,side_two):
            side_two = float(input(side_two))
 
            # check if its more than 0 and then calculate
-           if side_one > 0 and side_two > 0 :
+               num_check()
                area_rec = side_one*side_two
                peri = 2*(side_one+side_two)
 
                return area_rec, peri
-           else:
-               print(int_error)
-               side_one = ""
-               side_two = ""
 
-
-
-
-       except ValueError:
-           print(error)
 
 # main routine
 area_rec = ""

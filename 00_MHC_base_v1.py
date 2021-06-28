@@ -84,31 +84,25 @@ def square_area_peri(side):
        except ValueError:
            print(error)
 
-# calculates the area and peri for the rectangle
-def rectangle_ap(side_one, side_two):
-   valid = False
-   error = "Whoops! Please enter an integer "
-   while not valid:
-       try:
-           # get the two input of the side
-           side_one = float(input(side_one))
-           side_two = float(input(side_two))
-           # check if its more than 0 and then calculate
-           if side_one > 0 and side_two > 0:
-               area_rec = side_one * side_two
-               peri = 2 * (side_one + side_two)
+def num_check():
+    valid = False
+    error = "Whoops! Please enter an integer "
+    int_error = "ohh! Please enter an number more than zero"
+    while not valid:
 
-               return area_rec, peri
-           else:
-               print(error)
+        try:
+            response = float(input(side))
 
+            # if response is less or = to 0
+            side = float(input(side))
+            # check if its more than 0 and then calculate
+            if side > 0:
+                continue
+            else:
+                return response
 
-
-       except ValueError:
-           print(error)
-
-
-
+        except ValueError:
+            print(error)
 
 
 
@@ -116,7 +110,6 @@ def rectangle_ap(side_one, side_two):
 #
 area_sqr = ""
 area_cir = ""
-area_rec = ""
 keep_going = ""
 while keep_going == "":
 
