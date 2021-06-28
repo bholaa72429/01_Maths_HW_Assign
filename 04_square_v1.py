@@ -27,13 +27,16 @@ area_sqr = ""
 keep_going = ""
 while keep_going == "":
 
+   # ask for the sides
    area_sqr, peri_sqr = square_area_peri("Please enter side of the Square. ")
+
+   # print calculations
    print("Calculating...")
    print("Area of Square", area_sqr)
    print("Perimeter of Square", peri_sqr)
 
 
-
+   # more or end
    print()
    keep_going = input("Press <enter> to calculate more or any key to quit")
 
