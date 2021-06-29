@@ -2,7 +2,6 @@
 
 
 # ********** Function Area **********
-# checks that user has entered yes / no to a question
 def yes_no(question):
 
    to_check = ["yes", "no"]
@@ -23,7 +22,44 @@ def yes_no(question):
                return var_item
        print("Please Answer (yes / no). ")
 
-# area_peri = area and perimeter
+
+# checks that user has entered yes / no to a question
+def string_checker(shape_q):
+    valid_shape = [
+        ["circle"],
+        ["rectangle" ],
+        ["square" ],
+        ["triangle"]
+    ]
+
+
+    # initialise variables
+    shape_accept = ""
+    shape = ""
+    # ask user for desired shape and put it in lowercase
+    wanted_shape = input(shape_q).lower()
+
+    for var_list in valid_shape:
+
+        # if the snack is in one of the lists, return the full
+        if wanted_shape in var_list:
+
+            # Get full name of shape and put it
+            # in title case so it looks nice when outputted
+            shape = var_list[0].title()
+            shape_accept = "yes"
+            break
+        # if the chosen shape is not valid, set shape_accept to no
+        else:
+            shape_accept = "no"
+
+    # if the shape is not OK - ask question again.
+    if shape_accept == "yes":
+        return shape
+    else:
+        return("Invalid Shape Choice")
+
+
 def circle_area_peri(ans):
    valid = False
    error = "Whoops! Please enter an integer. "
@@ -31,92 +67,67 @@ def circle_area_peri(ans):
 
    while not valid:
 
-       try:
-           enterd = ans
-           if enterd == "yes":
-               # get users input (radius)
-               radius = float(input("Please Enter Radius. "))
+      try:
+          enterd = ans
+          if enterd == "yes":
+              # get users input (radius)
+              radius = float(input("Please Enter Radius. "))
 
-               # if user has the diameter
-           else:
-               diameter = float(input("Please Enter Diameter. "))
-               # work out teh radius
-               radius = diameter / 2
-               print("Calculating ...")
+           # if user has the diameter
+          else:
+              diameter = float(input("Please Enter Diameter. "))
+              # work out teh radius
+              radius = diameter / 2
+              print("Calculating ...")
 
-           # check if its more than 0 nad then calculate
-           if radius > 0:
-               area = 3.14 * radius * radius
-               peri = 2 * 3.14 * radius
+          # check if its more than 0 nad then calculate
+          if radius > 0:
+              area = 3.14*radius*radius
+              peri = 2 * 3.14 * radius
 
-               return area, peri
+              return area, peri
 
-           # if not more than zero show error
-           else:
-               print()
-               print(int_error)
-               # radius=""
+          # if not more than zero show error
+          else:
+              print()
+              print(int_error)
+              radius = ""
 
-       # If integer is not entered, show error
-       except ValueError:
+      # If integer is not entered, show error
+      except ValueError:
 
-           print(error)
-
-# calculates the area and peri for the square
-def square_area_peri(side):
-   valid = False
-   error = "Whoops! Please enter an integer "
-   int_error = "ohh! Please enter an number more than zero"
-   while not valid:
-       try:
-           side = float(input(side))
-           # check if its more than 0 and then calculate
-           if side > 0:
-               area = side * side
-               peri = 4 * side
-
-               return area, peri
-           else:
-               print(int_error)
-               side = ""
+          print(error)
 
 
-       except ValueError:
-           print(error)
-
-def num_check():
-    valid = False
-    error = "Whoops! Please enter an integer "
-    int_error = "ohh! Please enter an number more than zero"
-    while not valid:
-
-        try:
-            response = float(input(side))
-
-            # if response is less or = to 0
-            side = float(input(side))
-            # check if its more than 0 and then calculate
-            if side > 0:
-                continue
-            else:
-                return response
-
-        except ValueError:
-            print(error)
 
 
 
 # ********** Main Routine **********
-#
-area_sqr = ""
-area_cir = ""
+
+
+a = ""
 keep_going = ""
 while keep_going == "":
+    while a =="":
+        shape  = string_checker("Input the Shape: ").lower()
+        print(shape)
+        if shape == "circle":
+             rad_dia = yes_no("Do you have Radius of the Circle ?  ")
+             area_cir , peri_cir = circle_area_peri(rad_dia)
+             print("Area of Circle", area_cir)
+             print("Perimeter of Circle", peri_cir)
+        elif shape == "square":
+            print(" step 2")
+        elif shape == "rectangle":
+            print(" step 3")
+        elif shape == "triangle":
+            print(" step 4 ")
+        else:
+            print("END Program")
+            break
+    keep_going=input("Press<enter> to play or any key to quit")
+print("Thank you")
 
-   area_sqr, peri_sqr = square_area_peri("Please enter side of the Square. ")
-   print("Calculating...")
-   print("Area of Square", area_sqr)
-   print("Perimeter of Square", peri_sqr)
 # Set up dictionaries / lists needed to hold data
 
 
@@ -127,13 +138,6 @@ while keep_going == "":
 
 
 # Start of Shape Calculation Loop
-
-
-
-
-
-
-
 
 # End of Shape Calculation Loop
 
