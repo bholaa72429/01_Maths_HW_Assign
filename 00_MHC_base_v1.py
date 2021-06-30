@@ -105,17 +105,20 @@ def circle_area_peri(ans):
 # ********** Main Routine **********
 
 
-a = ""
+area = ""
 keep_going = ""
 while keep_going == "":
-    while a =="":
+    while area =="":
+        # get shape input
         shape  = string_checker("Input the Shape: ").lower()
         print(shape)
+        # if crircle
         if shape == "circle":
              rad_dia = yes_no("Do you have Radius of the Circle ?  ")
              area_cir , peri_cir = circle_area_peri(rad_dia)
              print("Area of Circle", area_cir)
              print("Perimeter of Circle", peri_cir)
+        # if other shape
         elif shape == "square":
             print(" step 2")
         elif shape == "rectangle":

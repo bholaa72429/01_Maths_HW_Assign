@@ -21,9 +21,6 @@ def rectangle_ap(side_one,side_two):
                side_one = ""
                side_two = ""
 
-
-
-
        except ValueError:
            print(error)
 
