@@ -31,10 +31,10 @@ def get_shape():
     # llist of  valid shape inputs  <full name, letter code (a -e)
     # , and possible abbreviations etc>
     valid_shape = [
-        ["Circle", "c","ci", "cir", "a"],
-        ["Rectangle", "r","re", "rec", "tangle", "b"],
-        ["Square", "s","sq", "squ", "squa", "c"],
-        ["Triangle", "t","tr", "tri","d"],
+        ["circle", "c","ci", "cir", "a"],
+        ["rectangle", "r","re", "rec", "tangle", "b"],
+        ["square", "s","sq", "squ", "squa", "c"],
+        ["triangle", "t","tr", "tri","d"],
 ]
 
     # holds snack order for a single user.
@@ -76,7 +76,7 @@ yes_no = [
 # ask user if they want a snack
 check_shape = "invalid choice"
 while check_shape == "invalid choice":
-    want_shape = input("  shape do you want ? ").lower()
+    want_shape = input("  ARE YOU READY  ? ").lower()
 
     check_shape = string_check(want_shape,yes_no)
 
