@@ -21,23 +21,23 @@ def num_check():
 
 # Function for Rectangle
 def rectangle_ap(side_one,side_two):
-   valid = False
 
-   while not valid:
+   while not num_check():
        try:
            # get the two input of the side
            side_one = float(input(side_one))
            side_two = float(input(side_two))
 
            # check if its more than 0 and then calculate
-               num_check()
+           if side_one > 0 and side_two > 0 :
                area_rec = side_one*side_two
                peri = 2*(side_one+side_two)
 
                return area_rec, peri
 
 
-# main routine
+
+# Main Routine
 area_rec = ""
 keep_going = ""
 while keep_going == "":
@@ -54,4 +54,3 @@ while keep_going == "":
 
 # farewell user at end of game.
 print("Thank you")
-
