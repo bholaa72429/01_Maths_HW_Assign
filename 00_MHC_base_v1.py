@@ -1,6 +1,4 @@
 # import statement
-
-
 # ********** Function Area **********
 def yes_no(question):
 
@@ -60,45 +58,6 @@ def string_checker(shape_q):
         return("Invalid Shape Choice")
 
 
-def circle_area_peri(ans):
-   valid = False
-   error = "Whoops! Please enter an integer. "
-   int_error = "oops! Please enter an number more than zero. "
-
-   while not valid:
-
-      try:
-          enterd = ans
-          if enterd == "yes":
-              # get users input (radius)
-              radius = float(input("Please Enter Radius. "))
-
-           # if user has the diameter
-          else:
-              diameter = float(input("Please Enter Diameter. "))
-              # work out teh radius
-              radius = diameter / 2
-              print("Calculating ...")
-
-          # check if its more than 0 nad then calculate
-          if radius > 0:
-              area = 3.14*radius*radius
-              peri = 2 * 3.14 * radius
-
-              return area, peri
-
-          # if not more than zero show error
-          else:
-              print()
-              print(int_error)
-              radius = ""
-
-      # If integer is not entered, show error
-      except ValueError:
-
-          print(error)
-
-
 
 
 
@@ -114,10 +73,7 @@ while keep_going == "":
         print(shape)
         # if crircle
         if shape == "circle":
-             rad_dia = yes_no("Do you have Radius of the Circle ?  ")
-             area_cir , peri_cir = circle_area_peri(rad_dia)
-             print("Area of Circle", area_cir)
-             print("Perimeter of Circle", peri_cir)
+            print(" step 1 ")
         # if other shape
         elif shape == "square":
             print(" step 2")

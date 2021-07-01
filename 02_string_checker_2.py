@@ -37,7 +37,7 @@ def get_shape():
         ["triangle", "t","tr", "tri","d"],
 ]
 
-    # holds snack order for a single user.
+    # holds shape order for a single user.
     shape_input = []
 
     wanted_shape = ""
