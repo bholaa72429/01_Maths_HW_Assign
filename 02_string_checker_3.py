@@ -31,47 +31,43 @@ def get_shape():
         ["circle", "c","ci", "cir", "a"],
         ["rectangle", "r","re", "rec", "tangle", "b"],
         ["square", "s","sq", "squ", "squa", "c"],
-        ["triangle", "t","tr", "tri","d"],
-]
+        ["triangle", "t","tr", "tri","d"],]
 
     # holds shape order for a single user.
     shape_input = []
-
     wanted_shape = ""
 
+    while wanted_shape !="end":
+        shape_row = []
 
-    shape_row = []
+        # ask user for desired snack and put it in lowercase
+        wanted_shape = input("Enter Shape: ").lower()
+        # remove white space around shapes
+        wanted_shape = wanted_shape.strip()
 
-    # ask user for desired snack and put it in lowercase
-    wanted_shape = input("Enter Shape: ").lower()
+         # check if shape is valid
+        shape_choice = string_check(wanted_shape,valid_shape)
 
-    if  wanted_shape == "end":
-        return shape_input
+        if shape_choice == "invalid choice":
+            print(" Please enter a valid Shape Option ")
 
-    # remove white space around shapes
-    wanted_shape = wanted_shape.strip()
+        shape_row.append(shape_choice)    # add shape to list...
 
-    # check if shape is valid
-    shape_choice = string_check(wanted_shape, valid_shape)
 
-    if shape_choice == "invalid choice":
-        print(" Please enter a valid Shape Option ")
+        # check that shape is not the exit code before adding
+        if shape_choice != "end" and shape_choice != "invalid choice":
 
-    # add shape to list...
-    shape_row.append(shape_choice)
-
-    # check that shape is not the exit code before adding
-    if shape_choice != "end" and shape_choice != "invalid choice":
-        shape_input.append(shape_row)
+            shape_input.append(shape_row)
+            return shape_input
 
 # Main Routine
 # valid options for yes / no question
 insert_shape = get_shape()
 # Show shape order
 print()
-if len(insert_shape) == 0:
-    print("Shape input: None")
+# if len(insert_shape) == 0:
+#     print("Shape input: None")
 print("Shape:")
-    #print(item)
+
 print(insert_shape)
 
