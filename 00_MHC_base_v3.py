@@ -58,7 +58,6 @@ def string_check(choice, options):
         return chosen
     else:
         return "invalid choice"
-
 # Function get shape
 def get_shape():
     # llist of  valid shape inputs  <full name, letter code (a -e)
@@ -68,42 +67,26 @@ def get_shape():
         ["rectangle", "r","re", "rec", "tangle", "b"],
         ["square", "s","sq", "squ", "squa", "c"],
         ["triangle", "t","tr", "tri","d"],]
-
     # holds shape order for a single user.
-    shape_input = []
     wanted_shape = ""
-
-    while wanted_shape !="end":
-        shape_row = []
-
-        # ask user for desired snack and put it in lowercase
+    while wanted_shape !="xxx":
+        # ask user for desired shape and put it in lowercase
         wanted_shape = input("Enter Shape: ").lower()
         # remove white space around shapes
         wanted_shape = wanted_shape.strip()
-
          # check if shape is valid
         shape_choice = string_check(wanted_shape,valid_shape)
-
         if shape_choice == "invalid choice":
             print(" Please enter a valid Shape Option ")
-
-        shape_row.append(shape_choice)    # add shape to list...
-
-
-        # check that shape is not the exit code before adding
+       # check that shape is not the exit code before adding
         if shape_choice != "end" and shape_choice != "invalid choice":
-
-            shape_input.append(shape_row)
             return shape_choice
-
-
 # Function for Rectangle
 def rectangle_ap(side_one,side_two):
 
     # get the two input of the side
     side_one = num_check(side_one)
     side_two = num_check(side_two)
-
     # calculate area and perimeter of rectangle
     area = side_one*side_two
     peri = 2*(side_one+side_two)
@@ -146,7 +129,7 @@ def circle_area_peri(ans):
       except ValueError:
 
           print(error)
-# Function for the square
+
 def square_ap(side_one):
 
     # get the two input of the side
@@ -157,16 +140,30 @@ def square_ap(side_one):
     peri = 4*side_one
     return area, peri
 
+def triangle_ap(side1,side2,side3):
+
+    s1 = num_check(side1)
+    s2 = num_check(side2)
+    s3 = num_check(side3)
+
+
+    peri = s1+s2+s3
+    #semi-perimeter
+    p=peri/2
+    area =(p*(p-s1)*(p-s2)*(p-s3))**0.5
+
+    return area, peri
+
 # ********** Main Routine **********
 # Main Routine
+# Loop to get '  shapes' input
+
 keep_going = ""
 while keep_going == "":
-
-    # checking if insert shape by user is verified
+# Start of Shape Calculation Loop
     insert_shape = get_shape()
     print(insert_shape)
-
-    # if rectangle
+    # --- Calculate the Area & Perimeter
     if insert_shape == "Rectangle":
         # asking for the the sides
         area_rec, peri_rec = rectangle_ap("Please Enter Length of the rectangle ",
@@ -176,16 +173,15 @@ while keep_going == "":
         print("Area of Rectangle", area_rec)
         print("Perimeter of Rectangle", peri_rec)
 
-    # if circle
-    elif insert_shape=="Circle":
+    elif insert_shape == "Circle":
         # Asking about the radius of the circle
         rad_dia = yes_no("Do you have Radius of the Circle ?  ")
 
-        area_cir , peri_cir = circle_area_peri(rad_dia)
+        area_cir, peri_cir = circle_area_peri(rad_dia)
+        print("Calculating...")
         print("Area of Circle", area_cir)
         print("Perimeter of Circle", peri_cir)
 
-    # if square
     elif insert_shape == "Square":
         area_sq, peri_sq = square_ap("Please Enter side of the square ")
         # print calculations
@@ -193,11 +189,14 @@ while keep_going == "":
         print("Area of Square", area_sq)
         print("Perimeter of Square", peri_sq)
 
-    # if triangle
     else:
-        print("Triangle-Coming soon")
+        area_tri, peri_tri = triangle_ap("Please Enter first side of triangle","Please Enter second side of triangle","Please Enter third side of triangle")
+        print("Calculating...")
+        print("Area of Square", area_tri)
+        print("Perimeter of Square", peri_tri)
 
     keep_going = input("Press <enter> to calculate more or any key to quit")
+# End of Shape Calculation Loop
 # farewell user at end of game.
 print("Thank you")
 
@@ -208,18 +207,12 @@ print("Thank you")
 # Ask the user if they have used the program before & show instruction if required
 
 
-# Loop to get 'how many shapes' input
 
 
-# Start of Shape Calculation Loop
-
-# End of Shape Calculation Loop
 
 
-# --- Calculate the Area & Perimeter
 
-
-# Ask for rounding of answer
+# Ask for rounding of answer and Unit for answer
 
 # ********** Printing Area **********
 
