@@ -157,7 +157,8 @@ def triangle_ap(side1,side2,side3):
 
     # calculating perimeter
     peri = side_1+side_2+side_3
-    # using peri(p) to calculate area
+    # heron's law
+    # using peri(p)to calculate area
     p = peri/2
     area =(p*(p-side_1)*(p-side_2)*(p-side_3))**0.5
 
@@ -192,52 +193,38 @@ while keep_going == "":
         # asking for the the sides
         area_1, peri_1 = rectangle_ap("Please Enter Length of the rectangle ",
                                             "Please enter width of the rectangle")
-        # print calculations
 
-        area = round(area_1, round_place)
-        peri = round(peri_1, round_place)
-        print("Calculating...")
-        print("Area of Rectangle", area )
-        print("Perimeter of Rectangle", peri)
-
-    # if circle
+   # if circle
     elif insert_shape == "Circle":
         # Asking about the radius of the circle
         rad_dia = yes_no("Do you have Radius of the Circle ?  ")
 
-        area_1, peri_1 = circle_area_peri(rad_dia)
-        area = round(area_1, round_place)
-        peri = round(peri_1, round_place)
-        print("Calculating...")
-        print("Area of Circle", area)
-        print("Perimeter of Circle", peri)
 
     # if square
     elif insert_shape == "Square":
         area_1, peri_1 = square_ap("Please Enter side of the square ")
-        # print calculations
-        area = round(area_1, round_place)
-        peri = round(peri_1, round_place)
-        print("Calculating...")
-        print("Area of Square", area)
-        print("Perimeter of Square", peri)
+
+
 
     # if triangle
     else:
         area_1, peri_1 = triangle_ap("Please Enter first side of triangle",
                                          "Please Enter second side of triangle",
                                          "Please Enter third side of triangle")
-        area = round(area_1, round_place)
-        peri = round(peri_1, round_place)
-        print("Calculating...")
-        print("Area of Square", area)
-        print("Perimeter of Square", peri)
+    # print calculations
+    area = round(area_1, round_place)
+    peri = round(peri_1, round_place)
+    print("Calculating...")
+    print("Area of {} {}" .format(insert_shape, area))
+    print("Perimeter of{} {}".format(insert_shape, peri))
+
     # adding the items to the lists
     all_shapes.append(insert_shape)
     all_area.append(area)
     all_peri.append(peri)
     print(all_shapes,all_area,all_peri) # trial purpose to see what is adding into list
     keep_going = input("Press <enter> to calculate more or any key to quit")
+
 # print details
 cal_data_frame = pandas.DataFrame(area_peri_dict)
 print(cal_data_frame)
