@@ -220,56 +220,6 @@ def shape_calcu():
 keep_going = ""
 while keep_going == "":
   shape_calcu()
-    # Start of Shape Calculation Loop
-    # checking if insert shape by user is verified
-    # --- and calculate the Area & Perimeter according to that
-    # insert_shape = get_shape()
-    # print(insert_shape)
-    # # decimal place option
-    # round_place = int(num_check("Enter the rounding Place value no"))
-
-
-
-
-    # # --- Calculate the Area & Perimeter
-    # if insert_shape == "Rectangle":
-    #     # asking for the the sides
-    #     area_rec1, peri_rec1 = rectangle_ap("Please Enter Length of the rectangle ",
-    #                                         "Please enter width of the rectangle")
-    #     # print calculations
-
-    #     area_rec = round(area_rec1, round_place)
-    #     peri_rec = round(peri_rec1, round_place)
-    #     print("Calculating...")
-    #     print("Area of Rectangle", area_rec )
-    #     print("Perimeter of Rectangle", peri_rec)
-
-    # # if circle
-    # elif insert_shape == "Circle":
-    #     # Asking about the radius of the circle
-    #     rad_dia = yes_no("Do you have Radius of the Circle ?  ")
-
-    #     area_cir, peri_cir = circle_area_peri(rad_dia)
-    #     print("Calculating...")
-    #     print("Area of Circle", area_cir)
-    #     print("Perimeter of Circle", peri_cir)
-
-    # # if square
-    # elif insert_shape == "Square":
-    #     area_sq, peri_sq = square_ap("Please Enter side of the square ")
-    #     # print calculations
-    #     print("Calculating...")
-    #     print("Area of Square", area_sq)
-    #     print("Perimeter of Square", peri_sq)
-
-    # # if triangle
-    # else:
-    #     area_tri, peri_tri = triangle_ap("Please Enter first side of triangle",
-    #                                      "Please Enter second side of triangle",
-    #                                      "Please Enter third side of triangle")
-    #     print("Calculating...")
-    #     print("Area of Square", area_tri)
-    #     print("Perimeter of Square", peri_tri)
 
   keep_going = input("Press <enter> to calculate more or any key to quit")
 
