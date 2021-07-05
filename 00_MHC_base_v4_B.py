@@ -166,6 +166,7 @@ def triangle_ap(side1,side2,side3):
 
 # ********** -Main Routine- **********
 # Loop to get '  shapes' input
+# Set up dictionaries / lists needed to hold data
 
 all_shapes = []
 all_area = []
@@ -176,6 +177,8 @@ area_peri_dict = {
     "Perimeter": all_peri
 
 }
+# decimal place option
+round_place = int(num_check("Enter the no of decimal Place"))
 
 keep_going = ""
 while keep_going == "":
@@ -186,8 +189,8 @@ while keep_going == "":
     # --- and calculate the Area & Perimeter according to that
     insert_shape = get_shape()
     print(insert_shape)
-    # decimal place option
-    round_place = int(num_check("Enter the no of decimal Place"))
+
+
     # --- Calculate the Area & Perimeter
     if insert_shape == "Rectangle":
         # asking for the the sides
@@ -216,7 +219,7 @@ while keep_going == "":
     peri = round(peri_1, round_place)
     print("Calculating...")
     print("Area of {} {}" .format(insert_shape, area))
-    print("Perimeter of{} {}".format(insert_shape, peri))
+    print("Perimeter of {} {}".format(insert_shape, peri))
 
     # adding the items to the lists
     all_shapes.append(insert_shape)
