@@ -1,6 +1,25 @@
 # import statement
-
+import pandas
 # ********** Function Area **********
+def dec_pl(deci_place_value):
+    valid = False
+    error = "Whoops! Please enter an integer "
+    int_error = "Opps! Please enter an number more than or equal to zero"
+    while not valid:
+
+        try:
+            # if response is less than 0
+            deci_place_value = float(input(deci_place_value))
+            # check if its more than 0
+            if deci_place_value >= 0:
+                return deci_place_value
+            else:
+                deci_place_value = ""
+                print(int_error)
+        except ValueError:
+            deci_place_value = ""
+            print(error)
+
 def yes_no(question):
 
    to_check = ["yes", "no"]
@@ -39,6 +58,7 @@ def num_check(side):
         except ValueError:
             side = ""
             print(error)
+
 #Function to check the string
 def string_check(choice, options):
     is_valid = "yes"
@@ -146,93 +166,116 @@ def square_ap(side_one):
     peri = 4*side_one
     return area, peri
 
-def triangle_ap(side1,side2,side3):
+def triangle_ap(side1,side2,base):
 
     # inputs of the three sides
-    side_1 = num_check(side1)
-    side_2 = num_check(side2)
-    side_3 = num_check(side3)
 
-    # calculating perimeter
-    peri = side_1+side_2+side_3
-    # using peri(p) to calculate area
-    p = peri/2
-    area =(p*(p-side_1)*(p-side_2)*(p-side_3))**0.5
+    valid = False
+    error = "Invalid Input: Make Sure sum of two sides of triangle > Base of the triangle"
 
-    return area, peri
+    while not valid:
 
-def shape_calcu():
-  insert_shape = get_shape()
-  print(insert_shape)
-    # decimal place option
-  round_place = int(num_check("Enter the rounding Place value no"))
-  # --- Calculate the Area & Perimeter
-  if insert_shape == "Rectangle":
-        # asking for the the sides
-        area_rec1, peri_rec1 = rectangle_ap("Please Enter Length of the rectangle ",
-                                            "Please enter width of the rectangle")
-        # print calculations
+        try:
+            side_1 = num_check(side1)
+            side_2 = num_check(side2)
+            base = num_check(base)
+            if side_1+side_2 > base:
+                # calculating perimeter
+                peri = side_1+side_2+base
+                # heron's law
+                # using peri(p)to calculate area
+                p = peri/2
+                area = (p*(p-side_1)*(p-side_2)*(p-base))**0.5
+                return area, peri
+            else:
+                side_1 = ""
+                side_2 = ""
+                base = ""
+                print(error)
+        except ValueError:
+            side_1 = ""
+            side_2 = ""
+            base = ""
+            print(error)
 
-        area_rec = round(area_rec1, round_place)
-        peri_rec = round(peri_rec1, round_place)
-        print("Calculating...")
-        print("Area of Rectangle", area_rec )
-        print("Perimeter of Rectangle", peri_rec)
 
-    # if circle
-  elif insert_shape == "Circle":
-        # Asking about the radius of the circle
-        rad_dia = yes_no("Do you have Radius of the Circle ?  ")
 
-        area_cir, peri_cir = circle_area_peri(rad_dia)
-        print("Calculating...")
-        print("Area of Circle", area_cir)
-        print("Perimeter of Circle", peri_cir)
-
-    # if square
-  elif insert_shape == "Square":
-        area_sq, peri_sq = square_ap("Please Enter side of the square ")
-        # print calculations
-        print("Calculating...")
-        print("Area of Square", area_sq)
-        print("Perimeter of Square", peri_sq)
-
-    # if triangle
-  else:
-        area_tri, peri_tri = triangle_ap("Please Enter first side of triangle",
-                                         "Please Enter second side of triangle",
-                                         "Please Enter third side of triangle")
-        print("Calculating...")
-        print("Area of Square", area_tri)
-        print("Perimeter of Square", peri_tri)
-
-# End of Shape Calculation Loop
-# farewell user at end of game.
 # ********** -Main Routine- **********
+
+# Ask the user if they have used the program before & show instruction if required
+
 # Loop to get '  shapes' input
+# Set up dictionaries / lists needed to hold data
+
+all_shapes = []
+all_area = []
+all_peri = []
+area_peri_dict = {
+    "Shapes": all_shapes,
+    "Area": all_area,
+    "Perimeter": all_peri
+
+}
+# decimal place option
+round_place = int(dec_pl("Enter the no of decimal Place"))
 
 keep_going = ""
 while keep_going == "":
-  shape_calcu()
-  keep_going = input("Press <enter> to calculate more or any key to quit")
+# Set up dictionaries / lists needed to hold data
 
+    # Start of Shape Calculation Loop
+    # checking if insert shape by user is verified
+    # --- and calculate the Area & Perimeter according to that
+    insert_shape = get_shape()
+    print(insert_shape)
+
+
+    # --- Calculate the Area & Perimeter
+    if insert_shape == "Rectangle":
+        # asking for the the sides
+        area_1, peri_1 = rectangle_ap("Please Enter Length of the rectangle ",
+                                            "Please enter width of the rectangle")
+
+   # if circle
+    elif insert_shape == "Circle":
+        # Asking about the radius of the circle
+        rad_dia = yes_no("Do you have Radius of the Circle ?  ")
+        area_1, peri_1 = circle_area_peri(rad_dia)
+
+
+    # if square
+    elif insert_shape == "Square":
+        area_1, peri_1 = square_ap("Please Enter side of the square ")
+
+
+
+    # if triangle
+    else:
+        area_1, peri_1 = triangle_ap("Please Enter first side of triangle",
+                                     "Please Enter second side of triangle",
+                                     "Please Enter the base of triangle")
+    # print calculations
+    area = round(area_1, round_place)
+    peri = round(peri_1, round_place)
+    print("Calculating...")
+    print("Area of {} {}" .format(insert_shape, area))
+    print("Perimeter of {} {}".format(insert_shape, peri))
+
+    # adding the items to the lists
+    all_shapes.append(insert_shape)
+    all_area.append(area)
+    all_peri.append(peri)
+    print(all_shapes,all_area,all_peri) # trial purpose to see what is adding into list
+    keep_going = input("Press <enter> to calculate more or any key to quit")
+
+# print details
+cal_data_frame = pandas.DataFrame(area_peri_dict)
+print(cal_data_frame)
 # End of Shape Calculation Loop
 # farewell user at end of game.
 print("Thank you")
 
 
-# Set up dictionaries / lists needed to hold data
-
-
-# Ask the user if they have used the program before & show instruction if required
-
-
-
-
-
-
-
-# Ask for rounding of answer and Unit for answer
 
 # ********** Printing Area **********
 
