@@ -172,6 +172,7 @@ def triangle_ap(side1,side2,base):
 
     valid = False
     error = "Invalid Input: Make Sure sum of two sides of triangle > Base of the triangle"
+    print()
 
     while not valid:
 
@@ -217,7 +218,7 @@ area_peri_dict = {
 
 }
 # decimal place option
-round_place = int(dec_pl("Enter the no of decimal Place"))
+round_place = int(dec_pl("Enter the number of Decimal Place "))
 
 keep_going = ""
 while keep_going == "":
@@ -234,7 +235,7 @@ while keep_going == "":
     if insert_shape == "Rectangle":
         # asking for the the sides
         area_1, peri_1 = rectangle_ap("Please Enter Length of the rectangle ",
-                                            "Please enter width of the rectangle")
+                                      "Please enter width of the rectangle")
 
    # if circle
     elif insert_shape == "Circle":
@@ -271,6 +272,7 @@ while keep_going == "":
 # print details
 cal_data_frame = pandas.DataFrame(area_peri_dict)
 print(cal_data_frame)
+
 # End of Shape Calculation Loop
 # farewell user at end of game.
 print("Thank you")
