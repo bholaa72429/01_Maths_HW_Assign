@@ -190,6 +190,8 @@ def triangle_ap(side1,side2,base):
 
             area_squared = (p*(p-side_1)*(p-side_2)*(p-base))
             if area_squared < 0:
+                print("oops that is not possible")
+                print()
                 continue
 
             else:
