@@ -2,6 +2,21 @@
 import pandas
 
 # ********** Function Area **********
+def unit_choice(question):
+
+   to_check = ["m", "cm", "meter","centimeter","mm","inches"]
+   valid = False
+   while not valid:
+       # ask question and put response in lowercase
+       answer1 = input(question).lower()
+       response = answer1.replace(" ","")
+       for var_item in to_check:
+           if response == var_item:
+               return response
+           elif response == var_item[0]:
+               return var_item
+       print("Please Enter a Valid unit like mm / cm / m / inch")
+
 def dec_pl(deci_place_value):
     valid = False
     error = "Whoops! Please enter an integer "
@@ -225,6 +240,8 @@ area_peri_dict = {
 }
 # decimal place option
 round_place = int(dec_pl("Enter the number of Decimal Place "))
+unit_1 = unit_choice("Please Enter the UNIT of the measurement")
+
 
 keep_going = ""
 while keep_going == "":
@@ -265,17 +282,24 @@ while keep_going == "":
     area = round(area_1, round_place)
     peri = round(peri_1, round_place)
     print("Calculating...")
-    print("Area of {} {}" .format(insert_shape, area))
-    print("Perimeter of {} {}".format(insert_shape, peri))
+    print("Area of {} is {} sq {} " .format(insert_shape, area, unit_1))
+    print("Perimeter of {} is {} {}".format(insert_shape, peri, unit_1))
 
     # adding the items to the lists
     all_shapes.append(insert_shape)
     all_area.append(area)
     all_peri.append(peri)
-    print(all_shapes,all_area,all_peri) # trial purpose to see what is adding into list
+    # print(all_shapes,all_area,all_peri) # trial purpose to see what is adding into list
     keep_going = input("Press <enter> to calculate more or any key to quit")
 
+# ********** Printing Area **********
+# The summary of shapes and their calculations
 # print details
+print()
+print("---Quick Summary---")
+print()
+
+#
 cal_data_frame = pandas.DataFrame(area_peri_dict)
 print(cal_data_frame)
 
@@ -285,6 +309,3 @@ print("Thank you")
 
 
 
-# ********** Printing Area **********
-
-# The summary of shapes and their calculations
