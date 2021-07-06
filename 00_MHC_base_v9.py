@@ -131,6 +131,7 @@ def rectangle_ap(side_one,side_two):
     # calculate area and perimeter of rectangle
     area = side_one*side_two
     peri = 2*(side_one+side_two)
+    # adding to the list
     rec_side_1.append(side_one)
     rec_side_2.append(side_two)
     rec_area.append(area)
@@ -155,12 +156,13 @@ def circle_area_peri(ans):
               diameter = float(input("Please Enter Diameter. "))
               # work out teh radius
               radius = diameter / 2
-              # print("Calculating ...")
+
 
           # check if its more than 0 nad then calculate
           if radius > 0:
               area = 3.14*radius*radius
               peri = 2 * 3.14 * radius
+              # adding to the list
               rad.append(radius)
               cir_area.append(area)
               cir_peri.append(peri)
@@ -221,6 +223,7 @@ def triangle_ap(side1,side2,base1):
             else:
 
                 area = (p*(p-side_1)*(p-side_2)*(p-base))**0.5
+                # adding to the list
                 tri_base.append(base)
                 tri_side_1.append(side_1)
                 tri_side_2.append(side_2)
@@ -266,7 +269,7 @@ tri_side_2=[]
 tri_base=[]
 tri_area=[]
 tri_peri=[]
-# Quick summary details
+# Quick summary details 
 area_peri_dict = {
     "Shapes": all_shapes,
     "Area": all_area,
