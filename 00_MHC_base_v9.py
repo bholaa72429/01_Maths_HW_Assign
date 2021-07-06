@@ -133,6 +133,8 @@ def rectangle_ap(side_one,side_two):
     peri = 2*(side_one+side_two)
     rec_side_1.append(side_one)
     rec_side_2.append(side_two)
+    rec_area.append(area)
+    rec_peri.append(peri)
     return area, peri
 
 def circle_area_peri(ans):
@@ -160,6 +162,8 @@ def circle_area_peri(ans):
               area = 3.14*radius*radius
               peri = 2 * 3.14 * radius
               rad.append(radius)
+              cir_area.append(area)
+              cir_peri.append(peri)
               return area, peri
 
           # if not more than zero show error
@@ -181,7 +185,10 @@ def square_ap(side_one):
     # calculate area and perimeter of rectangle
     area = side_one*side_one
     peri = 4*side_one
+    # adding to the list
     sq_side.append(side_one)
+    sq_area.append(area)
+    sq_peri.append(peri)
     return area, peri
 
 def triangle_ap(side1,side2,base1):
@@ -217,6 +224,8 @@ def triangle_ap(side1,side2,base1):
                 tri_base.append(base)
                 tri_side_1.append(side_1)
                 tri_side_2.append(side_2)
+                tri_area.append(area)
+                tri_peri.append(peri)
 
                 return area, peri
 
@@ -238,37 +247,57 @@ def triangle_ap(side1,side2,base1):
 all_shapes = []
 all_area = []
 all_peri = []
+# circle detail lists
 rad=[]
+cir_area=[]
+cir_peri=[]
+# square detail lists
 sq_side=[]
+sq_area=[]
+sq_peri=[]
+# rectangle detail lists
 rec_side_1=[]
 rec_side_2=[]
+rec_area=[]
+rec_peri=[]
+# triangle detail lists
 tri_side_1=[]
 tri_side_2=[]
 tri_base=[]
+tri_area=[]
+tri_peri=[]
+# Quick summary details
 area_peri_dict = {
     "Shapes": all_shapes,
     "Area": all_area,
     "Perimeter": all_peri
 
 }
-#dictionary for triangle's parameters
+# dictionary for triangle's parameters
 tri_dict = {"Triangle Side 1":tri_side_1,
                             "Triangle Side 2": tri_side_2,
-                            "Triangle Base" : tri_base
-
+                            "Triangle Base" : tri_base,
+                            " Area" : tri_area,
+                            " Perimeter":tri_peri
                 }
 #dictionary for rectangle's parameters
 rec_dict={
     "Rectangle Length":rec_side_1,
-    "Rectangle Width": rec_side_2
+    "Rectangle Width": rec_side_2,
+    "Area": rec_area,
+    "Perimeter": rec_peri
 }
 #dictionary for square's parameters
 sq_dict={
-     "Square side": sq_side
+     "Square side": sq_side,
+    "Area": sq_area,
+    "Perimeter":sq_peri
 }
 #dictionary for circle's parameters
 cir_dict={
-    "Radius":rad
+    "Radius":rad,
+    "Area": cir_area,
+    "Perimeter":cir_peri
 }
 # decimal place option
 round_place = int(dec_pl("Enter the number of Decimal Place "))
@@ -321,18 +350,25 @@ while keep_going == "":
     all_shapes.append(insert_shape)
     all_area.append(area)
     all_peri.append(peri)
-    print(all_shapes,all_area,all_peri) # trial purpose to see what is adding into list
+    #print(all_shapes,all_area,all_peri) # trial purpose to see what is adding into list
     keep_going = input("Press <enter> to calculate more or any key to quit")
 
-# print details
+# printing quick summary details
+print(" Summary of The Shapes")
 cal_data_frame = pandas.DataFrame(area_peri_dict)
 print(cal_data_frame)
+print()
+# printing detailed summary details details
+print("Detailed Summary of Each shape")
 tri_dict_frame = pandas.DataFrame(tri_dict)
 print(tri_dict_frame)
+print()
 sq_dict_frame = pandas.DataFrame(sq_dict)
 print(sq_dict_frame)
+print()
 rec_dict_frame = pandas.DataFrame(rec_dict)
 print(rec_dict_frame)
+print()
 cir_dict_frame = pandas.DataFrame(cir_dict)
 print(cir_dict_frame)
 
