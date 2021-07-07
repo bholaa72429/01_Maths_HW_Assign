@@ -96,6 +96,7 @@ def string_check(choice, options):
         return chosen
     else:
         return "invalid choice"
+
 # Function get shape
 def get_shape():
     # llist of  valid shape inputs  <full name, letter code (a -e)
@@ -109,6 +110,7 @@ def get_shape():
     wanted_shape = ""
     while wanted_shape !="xxx":
         # ask user for desired shape and put it in lowercase
+        print()
         wanted_shape = input("Enter Shape: ").lower()
 
         # remove white space around shapes
@@ -219,8 +221,6 @@ def triangle_ap(side1,side2,base1):
             side_2 = ""
             base = ""
             print(error)
-
-
 
 # ********** -Main Routine- **********
 
