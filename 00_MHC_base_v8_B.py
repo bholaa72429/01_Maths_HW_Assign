@@ -135,7 +135,7 @@ def rectangle_ap(side_one,side_two):
     area = side_one*side_two
     peri = 2*(side_one+side_two)
     # adding dimensions of the shape to the list
-    given_data = "Length: {}| Width: {}".format(side_one, side_two)
+    given_data = "|Length: {}| Width: {} |".format(side_one, side_two)
     dimensions.append(given_data)
     return area, peri
 
@@ -164,7 +164,7 @@ def circle_area_peri(ans):
               area = 3.14*radius*radius
               peri = 2 * 3.14 * radius
               # adding dimensions of the shape to the list
-              given_data = "Radius: {}".format(radius)
+              given_data = "|Radius: {} |".format(radius)
               dimensions.append(given_data)
               return area, peri
 
@@ -188,7 +188,7 @@ def square_ap(side_one):
     area = side_one*side_one
     peri = 4*side_one
     # adding dimensions of the shape to the list
-    given_data = "Side: {}".format(side_one)
+    given_data = "|Side: {} |".format(side_one)
     dimensions.append(given_data)
     return area, peri
 
@@ -223,7 +223,7 @@ def triangle_ap(side1,side2,base1):
 
                 area = (p*(p-side_1)*(p-side_2)*(p-base))**0.5
                 # adding dimensions of the shape to the list
-                given_data = "Side: {} |Side: {} |Base: {} ".format(side_1, side_2,base)
+                given_data = "|Side: {} |Side: {} |Base: {} |".format(side_1, side_2,base)
                 dimensions.append(given_data)
                 return area, peri
 
@@ -246,7 +246,7 @@ all_area = []
 all_peri = []
 area_peri_dict = {
     "Shape": all_shapes,
-    "Dimensions":dimensions,
+    "Given Dimensions":dimensions,
     "Area": all_area,
     "Perimeter": all_peri
 
@@ -304,6 +304,7 @@ while keep_going == "":
     print("Perimeter of {} is {} {}".format(insert_shape, peri, unit_1))
     area_unit = "{} sq{}".format(area,unit_1)
     peri_unit = "{} {}".format(peri,unit_1)
+
 # adding the items to the lists
     all_shapes.append(insert_shape)
     all_area.append(area_unit)
@@ -315,12 +316,16 @@ while keep_going == "":
 # The summary of shapes and their calculations
 # print details
 print()
-print("---Quick Summary---")
+print("**** Calculation Summary ****")
 print()
 
-#
-cal_data_frame = pandas.DataFrame(area_peri_dict)
-print(cal_data_frame)
+# # Set up columns to be printed...
+# pandas.set_option('display.max_columns', None)
+
+calc_data_frame = pandas.DataFrame(area_peri_dict)
+print(calc_data_frame)
+#write dataframe to csv file
+calc_data_frame.to_csv("AP_Calc.csv")
 
 # End of Shape Calculation Loop
 # farewell user at end of game.
