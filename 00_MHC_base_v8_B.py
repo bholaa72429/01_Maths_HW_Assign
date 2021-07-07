@@ -214,8 +214,8 @@ def triangle_ap(side1,side2,base1):
             p = peri/2
 
             area_squared = (p*(p-side_1)*(p-side_2)*(p-base))
-            if area_squared < 0:
-                print("Oops that is not possible")
+            if area_squared <= 0:
+                print("Oops!! This is not possible")
                 print()
                 continue
 
@@ -223,7 +223,7 @@ def triangle_ap(side1,side2,base1):
 
                 area = (p*(p-side_1)*(p-side_2)*(p-base))**0.5
                 # adding dimensions of the shape to the list
-                given_data = "Side1: {}|Side2: {}|Base: {}".format(side_1, side_2,base)
+                given_data = "Side: {} |Side: {} |Base: {} ".format(side_1, side_2,base)
                 dimensions.append(given_data)
                 return area, peri
 
@@ -292,16 +292,22 @@ while keep_going == "":
                                      "Please Enter second side of triangle",
                                      "Please Enter the base of triangle")
     # print calculations
-    area = round(area_1, round_place)
-    peri = round(peri_1, round_place)
+    if round_place == 0:
+        area = int(area_1)
+        peri = int(peri_1)
+    else:
+        area = round(area_1, round_place)
+        peri = round(peri_1, round_place)
+
     print("Calculating...")
     print("Area of {} is {} sq {} " .format(insert_shape, area, unit_1))
     print("Perimeter of {} is {} {}".format(insert_shape, peri, unit_1))
-
-    # adding the items to the lists
+    area_unit = "{} sq{}".format(area,unit_1)
+    peri_unit = "{} {}".format(peri,unit_1)
+# adding the items to the lists
     all_shapes.append(insert_shape)
-    all_area.append(area)
-    all_peri.append(peri)
+    all_area.append(area_unit)
+    all_peri.append(peri_unit)
     # print(all_shapes,all_area,all_peri) # trial purpose to see what is adding into list
     keep_going = input("Press <enter> to calculate more or any key to quit")
 
