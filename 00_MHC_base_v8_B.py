@@ -2,6 +2,8 @@
 import pandas
 
 # ********** Function Area **********
+
+# checks units, accepts cm, mm, m, question repeated if user response invalid
 def unit_choice(question):
 
    to_check = ["m", "cm", "meter","centimeter","mm","inches"]
