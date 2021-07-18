@@ -66,18 +66,18 @@ def num_check(side):
 
         try:
             # if response is less or = to 0
-            side = float(input(side))
+            side_1 = float(input(side))
             # check if its more than 0 and then calculate
-            if side > 0:
-                return side
+            if side_1 > 0:
+                return side_1
             else:
-                side = ""
+                side_1 = ""
                 print(int_error)
         except ValueError:
-            side = ""
+
             print(error)
 
-#Function to check the string
+# Function to check the string
 def string_check(choice, options):
     is_valid = "yes"
     chosen = ""
@@ -127,19 +127,30 @@ def get_shape():
         if shape_choice != "xxx" and shape_choice != "invalid choice":
             return shape_choice
 
-# Function for Rectangle
-def rectangle_ap(side_one,side_two):
+# Function for square and rectangle
+def squ_rec_ap(side_one,side_two):
 
     # get the two input of the side
-    side_one = num_check(side_one)
-    side_two = num_check(side_two)
-    # calculate area and perimeter of rectangle
-    area = side_one*side_two
-    peri = 2*(side_one+side_two)
-    # adding dimensions of the shape to the list
-    given_data = "|Length: {}| Width: {} |".format(side_one, side_two)
-    dimensions.append(given_data)
-    return area, peri
+
+    if side_one == side_two:
+        # calculate area and perimeter of square
+        area = side_one*side_two
+        peri = 4*side_one
+        # adding dimensions of the shape to the list
+        given_data = "|Side: {} |".format(side_one)
+        dimensions.append(given_data)
+        return area, peri
+    else:
+        side_one = num_check(side_one)
+        side_two = num_check(side_two)
+        # calculate area and perimeter of rectangle
+        area = side_one*side_two
+        peri = 2*(side_one+side_two)
+        # adding dimensions of the shape to the list
+        given_data = "|Length: {}| Width: {} |".format(side_one, side_two)
+        dimensions.append(given_data)
+        return area, peri
+
 
 def circle_area_peri(ans):
    valid = False
@@ -181,59 +192,61 @@ def circle_area_peri(ans):
 
           print(error)
 
-def square_ap(side_one):
 
-    # get the two input of the side
-    side_one = num_check(side_one)
 
-    # calculate area and perimeter of rectangle
-    area = side_one*side_one
-    peri = 4*side_one
-    # adding dimensions of the shape to the list
-    given_data = "|Side: {} |".format(side_one)
-    dimensions.append(given_data)
-    return area, peri
-
-def triangle_ap(side1,side2,base1):
-
-    # inputs of the three sides
-
+def triangle_ap(choice):
     valid = False
     error = "Invalid Input: Make Sure sum of two sides of triangle > Base of the triangle"
-    print()
 
     while not valid:
 
         try:
-            side_1 = num_check(side1)
-            side_2 = num_check(side2)
-            base = num_check(base1)
+            enterd = choice
+            if enterd == "yes":
+                 # get users input (radius)
+                side_1 = num_check("Enter Side One:")
+                side_2 = num_check("Enter Side Two: ")
+                base = num_check("Enter Base: ")
 
-            # calculating perimeter
-            peri = side_1+side_2+base
-            # heron's law
-            # using peri(p)to calculate area
-            p = peri/2
+                # calculating perimeter
+                peri = side_1+side_2+base
+                # heron's law
+                # using peri(p)to calculate area
+                p = peri/2
 
-            area_squared = (p*(p-side_1)*(p-side_2)*(p-base))
-            if area_squared <= 0:
-                print("Oops!! This is not possible")
-                print()
-                continue
+                area_squared = (p*(p-side_1)*(p-side_2)*(p-base))
+                if area_squared <= 0:
+                    print("Oops!! This is not possible. *Try Again*")
+                    print()
+                    continue
 
+                else:
+
+                    area = (p*(p-side_1)*(p-side_2)*(p-base))**0.5
+                    # adding dimensions of the shape to the list
+                    given_data = "|Side: {} |Side: {} |Base: {} |".format(side_1, side_2,base)
+                    dimensions.append(given_data)
+                    return area, peri
+
+           # if user has the height and base
             else:
-
-                area = (p*(p-side_1)*(p-side_2)*(p-base))**0.5
-                # adding dimensions of the shape to the list
-                given_data = "|Side: {} |Side: {} |Base: {} |".format(side_1, side_2,base)
+                print("NOTE: Perimeter Cannot be Calculated . Perimeter = 0")
+                height_1 = num_check("Enter Height")
+                base_1 = num_check("Enter base")
+                area= (base_1*height_1)/2
+                peri = 0
+                given_data = "|Height: {} |Base: {} |".format(height_1,base_1)
                 dimensions.append(given_data)
                 return area, peri
 
-        except TypeError:
+
+
+      # If integer is not entered, show error
+        except ValueError:
             side_1 = ""
             side_2 = ""
             base = ""
-            print(error)
+
 
 # ********** -Main Routine- **********
 
@@ -272,7 +285,7 @@ while keep_going == "":
     # --- Calculate the Area & Perimeter
     if insert_shape == "Rectangle":
         # asking for the the sides
-        area_1, peri_1 = rectangle_ap("Please Enter Length of the rectangle ",
+        area_1, peri_1 = squ_rec_ap("Please Enter Length of the rectangle ",
                                       "Please enter width of the rectangle")
 
    # if circle
@@ -284,15 +297,17 @@ while keep_going == "":
 
     # if square
     elif insert_shape == "Square":
-        area_1, peri_1 = square_ap("Please Enter side of the square ")
-
+        # numcheck added to check the side of the square 
+        sq_side = num_check("Please Enter side of the square ")
+        # side of the square given to rectangle same for length and width
+        area_1, peri_1 = squ_rec_ap(sq_side,sq_side)
 
 
     # if triangle
     else:
-        area_1, peri_1 = triangle_ap("Please Enter first side of triangle",
-                                     "Please Enter second side of triangle",
-                                     "Please Enter the base of triangle")
+        choice = yes_no("Do you have 3 sides measurement of triangle ?  ")
+        area_1, peri_1 = triangle_ap(choice)
+
     # print calculations
     if round_place == 0:
         area = int(area_1)
