@@ -1,5 +1,2 @@
-,Area,Given Dimensions,Perimeter,Shape
-0,6.0 sqmm,|Side: 3.0 |Side: 4.0 |Base: 5.0 |,12.0 mm,Triangle
-1,3.1 sqmm,|Radius: 1.0 |,6.3 mm,Circle
-2,12.0 sqmm,|Length: 3.0| Width: 4.0 |,14.0 mm,Rectangle
-3,30.0 sqmm,|Side: 12.0 |Side: 13.0 |Base: 5.0 |,30.0 mm,Triangle
+,Shape,Given Dimensions,Area,Perimeter
+0,Square,|Side: 3.0 |,9.0 sqcm,12.0 cm
