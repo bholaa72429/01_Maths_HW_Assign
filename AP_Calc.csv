@@ -1,2 +1,3 @@
 ,Shape,Given Dimensions,Area,Perimeter
-0,Square,|Side: 3.0 |,9.0 sqcm,12.0 cm
+0,Circle,|Radius: 5.0 |,78.5 sqcm,31.4 cm
+1,Circle,|Radius: 2.5 |,19.62 sqcm,15.7 cm

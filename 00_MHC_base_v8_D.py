@@ -1,28 +1,11 @@
 # import statement
 import pandas
+import operator
 
 # ********** Function Area **********
 
-# checks units, accepts cm, mm, m, question repeated if user response invalid
-def unit_choice(question):
-
-   to_check = ["m", "cm", "meter","centimeter","mm","inches"]
-   valid = False
-   while not valid:
-       # ask question and put response in lowercase
-       answer1 = input(question).lower()
-       response = answer1.replace(" ","")
-       for var_item in to_check:
-           if response == var_item:
-               return response
-           elif response == var_item[0]:
-               return var_item
-       print("Please Enter a Valid unit like mm / cm / m / inch")
-
-def yes_no(question):
-
-   to_check = ["yes", "no"]
-
+# checks units, accepts cm, mm, m, question repeated if user response invalid and yes / No response check
+def checker(question,list_choice,error):
    valid = False
    while not valid:
 
@@ -32,31 +15,34 @@ def yes_no(question):
        # check if input any space
        response = answer.replace(" ","")
 
-       for var_item in to_check:
+       for var_item in list_choice:
            if response == var_item:
                return response
            elif response == var_item[0]:
                return var_item
-       print("Please Answer (yes / no). ")
+       print(error)
 
-def num_check(side):
+def num_check(question,error,int_error,value,place):
     valid = False
-    error = "Whoops! Please enter an integer "
-    int_error = "ohh! Please enter an number more than zero"
+
     while not valid:
 
         try:
-            # if response is less or = to 0
-            side_1 = float(input(side))
-            # check if its more than 0 and then calculate
-            if side_1 > 0:
-                return side_1
+            if place == "integer" :
+                number = int(input(question))
             else:
-                side_1 = ""
+                number = float(input(question))
+
+            #comparing number >= value-0 for decimal place and 1 for Number check
+            if operator.__ge__(number,value):
+                return number
+            else:
+                deci_place_value = ""
                 print(int_error)
         except ValueError:
-
+            deci_place_value = ""
             print(error)
+
 
 # Function get shape
 def get_shape():
@@ -119,8 +105,9 @@ def squ_rec_ap(side_one,side_two):
         dimensions.append(given_data)
         return area, peri
     else:
-        side_one = num_check(side_one)
-        side_two = num_check(side_two)
+        side_one = num_check(side_one,"Whoops! Please enter an integer ","ohh! Please enter an number more than zero",1,"float")
+
+        side_two = num_check(side_two,"Whoops! Please enter an integer ","ohh! Please enter an number more than zero",1,"float")
         # calculate area and perimeter of rectangle
         area = side_one*side_two
         peri = 2*(side_one+side_two)
@@ -131,44 +118,27 @@ def squ_rec_ap(side_one,side_two):
 
 
 def circle_area_peri(ans):
-   valid = False
-   error = "Whoops! Please enter an integer. "
-   int_error = "oops! Please enter an number more than zero. "
 
-   while not valid:
+      enterd = ans
+      if enterd == "yes":
+          # get users input (radius)
+          radius = num_check("Enter Radius of the Circle","Whoops! Please enter an integer ","ohh! Please enter an number more than zero",1,"float")
 
-      try:
-          enterd = ans
-          if enterd == "yes":
-              # get users input (radius)
-              radius = float(input("Please Enter Radius. "))
+       # if user has the diameter
+      else:
+          diameter =num_check("Enter Diameter of the Circle","Whoops! Please enter an integer ","ohh! Please enter an number more than zero",1,"float")
+          # work out the radius
+          radius = diameter / 2
+          # print("Calculating ...")
 
-           # if user has the diameter
-          else:
-              diameter = float(input("Please Enter Diameter. "))
-              # work out teh radius
-              radius = diameter / 2
-              # print("Calculating ...")
+      #calculate the area and peri of circle
+      area = 3.14*radius*radius
+      peri = 2 * 3.14 * radius
+      # adding dimensions of the shape to the list
+      given_data = "|Radius: {} |".format(radius)
+      dimensions.append(given_data)
+      return area, peri
 
-          # check if its more than 0 nad then calculate
-          if radius > 0:
-              area = 3.14*radius*radius
-              peri = 2 * 3.14 * radius
-              # adding dimensions of the shape to the list
-              given_data = "|Radius: {} |".format(radius)
-              dimensions.append(given_data)
-              return area, peri
-
-          # if not more than zero show error
-          else:
-              print()
-              print(int_error)
-              radius = ""
-
-      # If integer is not entered, show error
-      except ValueError:
-
-          print(error)
 
 
 
@@ -182,9 +152,10 @@ def triangle_ap(choice):
             enterd = choice
             if enterd == "yes":
                  # get users input (radius)
-                side_1 = num_check("Enter Side One:")
-                side_2 = num_check("Enter Side Two: ")
-                base = num_check("Enter Base: ")
+                side_1 = num_check("Enter Side One:","Whoops! Please enter an integer ","ohh! Please enter an number more than zero",1,"float")
+
+                side_2 = num_check("Enter Side Two:","Whoops! Please enter an integer ","ohh! Please enter an number more than zero",1,"float")
+                base = num_check("Enter Base:","Whoops! Please enter an integer ","ohh! Please enter an number more than zero",1,"float")
 
                 # calculating perimeter
                 peri = side_1+side_2+base
@@ -209,8 +180,8 @@ def triangle_ap(choice):
            # if user has the height and base
             else:
                 print("NOTE: Perimeter Cannot be Calculated . Perimeter = 0")
-                height_1 = num_check("Enter Height")
-                base_1 = num_check("Enter base")
+                height_1 = num_check("Enter Height:","Whoops! Please enter an integer ","ohh! Please enter an number more than zero",1,"float")
+                base_1 =  num_check("Enter Base:","Whoops! Please enter an integer ","ohh! Please enter an number more than zero",1,"float")
                 area= (base_1*height_1)/2
                 peri = 0
                 given_data = "|Height: {} |Base: {} |".format(height_1,base_1)
@@ -244,20 +215,13 @@ area_peri_dict = {
     "Perimeter": all_peri
 
 }
+to_check = ["yes", "no"]
+to_check1 = ["m", "cm", "meter","centimeter","mm","inches"]
 # decimal place option
-valid = False
-while not valid:
-        try:
-            round_place = int(input("Enter the number of Decimal Place "))
-            if round_place >= 0:
-                break
-            else:
-                print("Opps! Please enter an number more than or equal to zero")
-        except ValueError:
+round_place = int(num_check("Enter the number of Decimal Place ",
+                         "Whoops! Please enter an integer","Opps! Please enter an number more than or equal to zero",0,"integer"))
 
-            print("Whoops! Please enter an integer ")
-
-unit_1 = unit_choice("Please Enter the UNIT of the measurement")
+unit_1 = checker("Please Enter the UNIT of the measurement",to_check1,"Please Enter a Valid unit like mm / cm / m / inch")
 
 
 keep_going = ""
@@ -280,21 +244,21 @@ while keep_going == "":
    # if circle
     elif insert_shape == "Circle":
         # Asking about the radius of the circle
-        rad_dia = yes_no("Do you have Radius of the Circle ?  ")
+        rad_dia = checker("Do you have Radius of the Circle ?  ",to_check,"Please Answer (yes / no). ")
         area_1, peri_1 = circle_area_peri(rad_dia)
 
 
     # if square
     elif insert_shape == "Square":
         # numcheck added to check the side of the square 
-        sq_side = num_check("Please Enter side of the square ")
+        sq_side = num_check("Enter Side of square:","Whoops! Please enter an integer ","ohh! Please enter an number more than zero",1,"float")
         # side of the square given to rectangle same for length and width
         area_1, peri_1 = squ_rec_ap(sq_side,sq_side)
 
 
     # if triangle
     else:
-        choice = yes_no("Do you have 3 sides measurement of triangle ?  ")
+        choice = checker("Do you have 3 sides measurement of triangle ?  ",to_check,"Please Answer (yes / no). ")
         area_1, peri_1 = triangle_ap(choice)
 
     # print calculations
