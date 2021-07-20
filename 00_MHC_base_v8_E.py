@@ -43,7 +43,6 @@ def num_check(question,error,int_error,value,place):
             deci_place_value = ""
             print(error)
 
-
 # Function get shape
 def get_shape():
     # llist of  valid shape inputs  <full name, letter code (a -e)
@@ -62,10 +61,10 @@ def get_shape():
 
         # remove white space around shapes
         wanted_shape = wanted_shape.strip()
-
+        if wanted_shape == "xxx":
+            break
         # check if shape is valid
         is_valid = "yes"
-        chosen = ""
         for var_list in valid_shape:
             # if the shape is in one of the lists, return the full
             if wanted_shape in var_list:
@@ -90,7 +89,7 @@ def get_shape():
         # check that shape is not the exit code before adding
         if shape_choice != "xxx" and shape_choice != "invalid choice":
             return shape_choice
-
+        wanted_shape = input("ENter xxx")
 # Function for square and rectangle
 def squ_rec_ap(side_one,side_two):
 
@@ -116,7 +115,6 @@ def squ_rec_ap(side_one,side_two):
         dimensions.append(given_data)
         return area, peri
 
-
 def circle_area_peri(ans):
 
       enterd = ans
@@ -138,9 +136,6 @@ def circle_area_peri(ans):
       given_data = "|Radius: {} |".format(radius)
       dimensions.append(given_data)
       return area, peri
-
-
-
 
 def triangle_ap(choice):
     valid = False
@@ -232,7 +227,7 @@ while keep_going == "":
     # checking if insert shape by user is verified
     # --- and calculate the Area & Perimeter according to that
     insert_shape = get_shape()
-    print(insert_shape)
+    #print(insert_shape)
 
 
     # --- Calculate the Area & Perimeter
@@ -257,10 +252,12 @@ while keep_going == "":
 
 
     # if triangle
-    else:
+    elif insert_shape == "Triangle":
         choice = checker("Do you have 3 sides measurement of triangle ?  ",to_check,"Please Answer (yes / no). ")
         area_1, peri_1 = triangle_ap(choice)
-
+    else:
+        print("END OF CALCULATIONS!")
+        break
     # print calculations
     if round_place == 0:
         area = int(area_1)
