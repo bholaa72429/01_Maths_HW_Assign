@@ -43,6 +43,31 @@ def num_check(question,error,int_error,value,place):
             deci_place_value = ""
             print(error)
 
+def instructions():
+
+    print("****** Welcome to Area & Perimeter Calculator ******")
+    to_check = ["yes", "no"]
+
+    first_time = checker("\nHave you used this calculator before? ",to_check,"Please Enter YES or NO")
+
+    if first_time == "yes":
+        return ""
+
+    print()
+    print("***** Instructions ******")
+    print()
+    print("This program will ask you for...")
+    print("- Choose from following shapes - Square, Rectangle, Triangle, Circle")
+    print("- Pick the number of decimal place you want the area and perimeter output")
+    print("- Pick unit for the dimensions of the shape (Valid unit are mm / cm / m / inch)")
+    print("- And the dimension of the shape!!")
+    print()
+    print("At the end you will be provided with the summary of the shape with dimension entered and Area & Perimeter.")
+    print()
+    print("The data will also be written to a text file which has the AP_Calc.csv "
+          " name .")
+    print("Note: You can quit by pressing any letter at the end of shape calculation OR 'xxx' at shape input to end program ")
+
 # Function get shape
 def get_shape():
     # llist of  valid shape inputs  <full name, letter code (a -e)
@@ -57,6 +82,7 @@ def get_shape():
     while wanted_shape !="xxx":
         # ask user for desired shape and put it in lowercase
         print()
+        print("OPTION TO PICK FROM: Square, Rectangle, Triangle, Circle")
         wanted_shape = input("Enter Shape: ").lower()
 
         # remove white space around shapes
@@ -89,7 +115,7 @@ def get_shape():
         # check that shape is not the exit code before adding
         if shape_choice != "xxx" and shape_choice != "invalid choice":
             return shape_choice
-        wanted_shape = input("ENter xxx")
+
 # Function for square and rectangle
 def squ_rec_ap(side_one,side_two):
 
@@ -192,12 +218,16 @@ def triangle_ap(choice):
             base = ""
 
 
+
+
 # ********** -Main Routine- **********
 
 # Ask the user if they have used the program before & show instruction if required
+instructions()
 
 # Loop to get '  shapes' input
 # Set up dictionaries / lists needed to hold data
+
 
 all_shapes = []
 dimensions =[]
@@ -205,7 +235,7 @@ all_area = []
 all_peri = []
 area_peri_dict = {
     "Shape": all_shapes,
-    "Given Dimensions":dimensions,
+    "Given Dimensions": dimensions,
     "Area": all_area,
     "Perimeter": all_peri
 
@@ -213,10 +243,14 @@ area_peri_dict = {
 to_check = ["yes", "no"]
 to_check1 = ["m", "cm", "meter","centimeter","mm","inches"]
 # decimal place option
+print()
 round_place = int(num_check("Enter the number of Decimal Place ",
-                         "Whoops! Please enter an integer","Opps! Please enter an number more than or equal to zero",0,"integer"))
+                         "Whoops! Please enter an integer",
+                         "Opps! Please enter an number more than or equal to zero",
+                         0,"integer"))
 
-unit_1 = checker("Please Enter the UNIT of the measurement",to_check1,"Please Enter a Valid unit like mm / cm / m / inch")
+unit_1 = checker("Please Enter the UNIT of the measurement",
+                 to_check1,"Please Enter a Valid unit like mm / cm / m / inch")
 
 
 keep_going = ""
@@ -246,7 +280,8 @@ while keep_going == "":
     # if square
     elif insert_shape == "Square":
         # numcheck added to check the side of the square 
-        sq_side = num_check("Enter Side of square:","Whoops! Please enter an integer ","ohh! Please enter an number more than zero",1,"float")
+        sq_side = num_check("Enter Side of square:","Whoops! Please enter an integer ",
+                            "ohh! Please enter an number more than zero",1,"float")
         # side of the square given to rectangle same for length and width
         area_1, peri_1 = squ_rec_ap(sq_side,sq_side)
 
@@ -267,9 +302,9 @@ while keep_going == "":
         peri = round(peri_1, round_place)
 
     print("Calculating...")
-    print("Area of {} is {} sq {} " .format(insert_shape, area, unit_1))
+    print("Area of {} is {} square {} " .format(insert_shape, area, unit_1))
     print("Perimeter of {} is {} {}".format(insert_shape, peri, unit_1))
-    area_unit = "{} sq{}".format(area,unit_1)
+    area_unit = "{} square {}".format(area,unit_1)
     peri_unit = "{} {}".format(peri,unit_1)
 
 # adding the items to the lists
@@ -296,7 +331,8 @@ calc_data_frame.to_csv("AP_Calc.csv")
 
 # End of Shape Calculation Loop
 # farewell user at end of game.
-print("Thank you")
 
+print("***-Thank You For Using The Calculator-***")
+print("***-Note: for full details, please see the excel file called 'tickets_details -***")
 
 
