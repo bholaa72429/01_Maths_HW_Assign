@@ -1,3 +1,5 @@
 ,Shape,Given Dimensions,Area,Perimeter
-0,Square,|Side: 7.0 |,49 square cm,28 cm
-1,Rectangle,|Length: 67.0| Width: 3.0 |,201 square cm,140 cm
+0,Square,|Side: 6.0 |,36 square cm,24 cm
+1,Triangle,|Height: 2.0 |Base: 9.0 |,9 square cm,0 cm
+2,Circle,|Radius: 10.0 |,314 square cm,62 cm
+3,Rectangle,|Length: 8.0| Width: 9.0 |,72 square cm,34 cm
