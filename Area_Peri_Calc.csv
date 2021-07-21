@@ -1,0 +1,10 @@
+,   Shape  ,   Given Dimensions  ,   Area  ,   Perimeter
+0,Triangle,|Height: 5.0 |Base: 8.0 |,20 square cm,0 cm
+1,Triangle,|Side: 6.0 |Side: 9.0 |Base: 11.0 |,26 square cm,26 cm
+2,Circle,|Radius: 7.0 |,153 square cm,43 cm
+3,Rectangle,|Length: 3.0| Width: 7.0 |,21 square cm,20 cm
+4,Square,|Side: 9.0 |,81 square cm,36 cm
+5,Rectangle,|Length: 4.0| Width: 8.0 |,32 square cm,24 cm
+6,Circle,|Radius: 2.5 |,19 square cm,15 cm
+7,Triangle,|Side: 4.0 |Side: 7.0 |Base: 9.0 |,13 square cm,20 cm
+8,Circle,|Radius: 2.5 |,19 square cm,15 cm

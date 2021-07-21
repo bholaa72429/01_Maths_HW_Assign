@@ -210,7 +210,7 @@ def triangle_ap(choice):
 
            # if user has the height and base of triangle
             else:
-                print("NOTE: Perimeter Cannot be Calculated . Perimeter = 0")
+                print("~NOTE: Perimeter Cannot be Calculated . Perimeter = 0~")
                 height_1 = num_check("Enter Height: ","Whoops! Please enter an integer ",
                                      "ohh! Please enter an number more than zero",1,"float")
                 base_1 =  num_check("Enter Base: ","Whoops! Please enter an integer ",
@@ -233,10 +233,10 @@ dimensions =[]
 all_area = []
 all_peri = []
 area_peri_dict = {
-    "Shape": all_shapes,
-    "Given Dimensions": dimensions,
-    "Area": all_area,
-    "Perimeter": all_peri
+    "   Shape  ": all_shapes,
+    "   Given Dimensions  ": dimensions,
+    "   Area  ": all_area,
+    "   Perimeter": all_peri
 }
 # list for the checker function
 to_check = ["yes", "no"]
@@ -313,7 +313,7 @@ while insert_shape != "xxx":
     all_peri.append(peri_unit)
 
 
-    insert_shape = input("Press <enter> to calculate more or XXX to quit")
+    insert_shape = input("Press <enter> to calculate more or XXX to quit").lower()
 
 # ********** Printing Area **********
 # The summary of shapes and their calculations
@@ -326,12 +326,12 @@ print()
 calc_data_frame = pandas.DataFrame(area_peri_dict)
 print(calc_data_frame)
 #write dataframe to csv file
-calc_data_frame.to_csv("AP1_Calc.csv")
+calc_data_frame.to_csv("Area_Peri_Calc.csv")
 
 # end of Shape Calculation Loop
 # farewell user at end of game.
 print()
 print("***-Thank You For Using The Calculator-***")
-print("***-Note: for full details, please see the excel file called 'tickets_details -***")
-
+print("***-Note: for full details, please see the csv file called 'Area_Peri_Calc.csv -***")
+print("*** You can also open this file in exel for better presentation  ***")
 
